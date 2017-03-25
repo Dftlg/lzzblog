@@ -1,0 +1,51 @@
+﻿@model lzz博客.Models.FriendLink
+<div id="linkfriendcontent">
+    <div class="c_navbar">友链管理 >> 友链列表</div>
+    <div class="fs_wapper">       
+            @using (Ajax.BeginForm("AddFriendlink", "FriendLink", new AjaxOptions
+            {
+                UpdateTargetId = "linkfriendcontent",
+                InsertionMode = InsertionMode.ReplaceWith,
+
+            }))
+            {
+                @Html.ValidationSummary(true);
+                <fieldset>
+                <legend>添加文章</legend>
+                <ul>
+                    <li>
+                    <div class="editor-label">
+                        @Html.LabelFor(fl => fl.Name)
+                    </div>
+                    <div class="layui-input-block">
+                        @Html.EditorFor(fl => fl.Name)
+                        @Html.ValidationMessageFor(fl => fl.Name)
+                    </div>
+                     </li>
+                    <li>
+                    <div class="editor-label">
+                        @Html.LabelFor(fl => fl.Href)
+                    </div>
+                    <div class="layui-input-block">
+                        @Html.EditorFor(fl => fl.Href)
+                        @Html.ValidationMessageFor(fl => fl.Href)
+                    </div>
+                    </li>
+                    <li>
+                        <div class="editor-label">
+                        </div>
+                    <div class="footype editor-field">
+                        <input type="submit" value="发布" />
+                    </div>
+                    </li>
+                </ul>
+                </fieldset>
+            }
+        </div>
+    </div>
+</div>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+
+
+

@@ -1,0 +1,21 @@
+﻿@model PagerData<lzz博客.Models.CommonModel>
+                @{Html.RenderPartial("PartialUserList", Model);}
+    <div class="clear"></div>
+    <script type="text/javascript">
+        $(".btnDel").click(function () {
+            if (confirm("你确定要删除该文章吗？")) {
+                var url = $(this).attr("href");
+                $.post(url, null, function (data) {
+                    if (data) {
+                        alert("删除成功!");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("删除失败！");
+                    }
+                });
+            }
+            return false;
+        });
+    </script>
+                    @*}*@

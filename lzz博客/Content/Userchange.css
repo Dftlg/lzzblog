@@ -1,0 +1,46 @@
+﻿.workspace{
+    border-left:1px solid #fff;
+}
+legend{
+    font-size:24px;
+    font-weight:bold;
+}
+.legend{
+    font-size:24px;
+    font-weight:bold;
+}
+fieldset ul li{
+    padding:20px 0px;
+    border-bottom:1px solid #808080;
+}
+.editor-label{
+    font-size:14px;
+    font-weight:bold;
+}
+.editor-field{
+    margin:0px 0px 0px 70px
+}
+.cha{
+    margin:0px 0px 0px 70px;
+    width:80px;
+    height:25px;
+}
+#pas{
+    font-size:24px;
+    font-weight:bold;
+}
+.ctrl{
+    margin:10px 0px;
+    font-size:14px;
+
+}
+#chang{
+    height:25px;
+    margin:10px 0px;
+}
+.leftnav{
+    font-size:18px;
+}
+.fontpn{
+    margin:10px;
+}

@@ -1,0 +1,37 @@
+﻿@*@model lzz博客.Models.User*@
+@try
+{
+   if (HttpContext.Current.Request.Cookies["User"].Values["Pass"] == "False")
+  {
+    using (Html.BeginForm("Logout", "User", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("你好，" + HttpContext.Current.Request.Cookies["User"].Values["UserName"] + "!", "UserCenter", "User", routeValues: null, htmlAttributes: new { title = "Manage", @class = "fontsize" })
+            </li>
+            <li><a class ="fontsize" href="javascript:document.getElementById('logoutForm').submit()">注销</a></li>
+        </ul>
+        }
+    }
+    else
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("注册", "Register", "User", routeValues: null, htmlAttributes: new { id = "registerLink" ,@class ="fontsize" })</li>
+            <li>@Html.ActionLink("登录", "Login", "User", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "fontsize" })</li>
+        </ul>
+    }
+
+}
+catch
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("注册", "Register", "User", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "fontsize" })</li>
+        <li>@Html.ActionLink("登录", "Login", "User", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "fontsize" })</li>
+    </ul>
+
+
+}
+
+

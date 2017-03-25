@@ -1,0 +1,36 @@
+﻿@model lzz博客.Models.Reply
+@Styles.Render("~/messageboard")
+@*@Styles.Render("~/Lycs")*@
+<div>
+    <div>
+        @using (Html.BeginForm("RyAdd","Reply"))
+        {
+            @Html.ValidationSummary(true);
+            <div>
+                    <div class="layui-input-block">                       
+                        @Html.TextAreaFor(Ry=>Ry.ReplyContent,new { @placeholder="说点什么..",@class= "layui-textarea" } )                      
+                        @Html.ValidationMessageFor(Ry => Ry.ReplyContent)                        
+                    </div>
+                    <div>                        
+                        @*@Html.HiddenFor(Ry=>Ry.CommonModel.CommonModelId)*@                      
+                       <input type="hidden" name="time" value="@DateTime.Now">
+                        @try
+                        {
+                        <input type="hidden" name="user" value="@HttpContext.Current.Request.Cookies["User"].Values["UserName"]">
+                        }
+                        catch
+                        {
+                            <input type="hidden" name="user" value="nouser">
+                        }
+                    </div>
+                    <div class="footype">
+                        <input type="submit" value="发 布" class="button black"/>
+                    </div>
+            </div>  
+                          
+        }
+    </div>
+</div>
+@Styles.Render("~/buttoncss")
+
+

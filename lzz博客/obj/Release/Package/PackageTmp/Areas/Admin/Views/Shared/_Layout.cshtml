@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" href="~/Content/favicon.ico">
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")   
+    @Scripts.Render("~/bundles/modernizr")
+    @*@Scripts.Render("~/bundles/EasyUi")*@
+    @*@Scripts.Render("~/Scripts/Easyui")*@
+    @Scripts.Render("~/admineasyuijs")
+    @Styles.Render("~/easyuicss")
+    @Styles.Render("~/admineasyuiiconcss")
+    @Styles.Render("~/Css/Admin")  
+    @Scripts.Render("~/global")
+    @Scripts.Render("~/EasyUi/js")
+    @Scripts.Render("~/Areas/Admin/Scripts/Administratorjs")
+    @Styles.Render("~/democss")
+    @Styles.Render("~/JqueryUiMetro")
+    @Scripts.Render("~/bundles/kindeditor")
+    @Scripts.Render("~/friendjs")
+    @Styles.Render("~/bootstrapcss")
+    @Styles.Render("~/UserCss")
+    @Styles.Render("~/kindcss")
+    
+    
+    
+
+
+</head>
+<body class="easyui-layout"e>
+    <div id="north" class="key" data-options="region:'north'">
+        @Html.Action("PartialNorth", "Home")
+    </div>
+    <div id="south" data-options="region:'south'"></div>
+    @*<div id="west" data-options="region:'west',title:' ',split:true" style="border-top: solid 1px #1BA1E2; border-right: solid 1px #1BA1E2; border-bottom: solid 1px #1BA1E2"></div>*@
+    <div id="west" data-options="region:'west',split:true" title="导航"></div>
+    <div id="center" data-options="region:'center'">
+            @RenderBody()
+    </div>
+</body>
+    
+</html>
+@*<script>
+    var editor;
+    $(".easyui-layout").ready(function () {
+        editor = KindEditor.ready(function (K) {
+            editor = K.create('textarea[id="kindcontect"]');
+        });
+    })
+</script>*@

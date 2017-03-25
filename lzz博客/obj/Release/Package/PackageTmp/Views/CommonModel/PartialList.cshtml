@@ -1,0 +1,10 @@
+﻿@model PagerData<lzz博客.Models.CommonModel>
+<div class="cModel_List">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@Html.ActionLink(item.Title, "Index", "CommonModel", new { id = item.CommonModelId }, null)  <time>@item.ReleaseDate.ToString("yyyy-MM-dd")</time></li>
+        }
+    </ul>
+</div>
+@Html.Pager(this.ViewContext.RouteData.Values, Model.Config, "pager", "pager")

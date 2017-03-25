@@ -1,0 +1,16 @@
+﻿@model lzz博客.Areas.Admin.Models.Administrator
+
+<div class="admininfo_bar">欢迎您：@HttpContext.Current.Request.Cookies["User"].Values["UserName"] 
+<a href="@Url.RouteUrl("Admin_default", new { controller = "Administrator", action = "ChangePassWord" })" @*onclick="ShowChangePwdDlg('@Url.RouteUrl("Admin_default", new { controller = "Administrator", action = "ChangePassWord" })')"*@>修改密码</a> 
+ @Html.RouteLink("登出", "Default",new { controller="Home",action="Index"} )  </div>
+
+<div class="tools_bar">
+    <div class="header">
+        <a id="home" href="~/Home/Index"><img src="~/Areas/Admin/Content/images/home.png" /> 首页</a>
+        <a id="cagegory_cfg" href="javascript:void(0)" @*class="easyui-menubutton" data-options="menu:'#menu_category'"*@><img src="~/Areas/Admin/Content/images/folder.png" /> 栏目管理</a>
+        <a id="file_cfg" href="javascript:void(0)"><img src="~/Areas/Admin/Content/images/file.png"/> 文章管理</a>
+        <a id="user_cfg" href="#"><img src="~/Areas/Admin/Content/images/user.png" /> 用户管理</a>
+        <a id="system_cfg" href="javascript:void(0)"><img src="~/Areas/Admin/Content/images/config.png" /> 系统设置</a>
+        
+    </div>
+ </div>

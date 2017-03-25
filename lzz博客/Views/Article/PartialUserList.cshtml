@@ -1,0 +1,86 @@
+﻿@model PagerData<lzz博客.Models.CommonModel>
+ @*<div class="con">*@
+    <table class="modelitems_table">
+        <tr>
+            <th>ID</th>
+            <th>栏目</th>
+            <th>标题</th>
+            <th>发表者</th>
+            <th>发布时间</th>
+            <th>状态</th>
+            <th>点击</th>
+            <th colspan="2">操作</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CommonModelId</td>
+                <td class="typew" id=@item.CategoryId>@item.Category.Name</td>
+                @*<td>[@Html.ActionLink(item.Category.Name, "UserAll", new { id = item.CategoryId })] </td>*@
+                <td class="title">@item.Title</td>
+                <td>@item.Inputer</td>
+                <td>@item.ReleaseDate</td>
+                <td>@lzz博客.Models.CommonModel.ContentStatus.FirstOrDefault(c => c.Value == item.Status.ToString()).Text</td>
+                <td>@item.Hits</td>
+                @*<td>@Html.ActionLink("修改", "UserEdit", new { id = item.CommonModelId })</td>*@
+                <td class="type" id=@item.CommonModelId>修改</td>
+                <td>@Html.ActionLink("删除", "UserDelete", new { id = item.CommonModelId }, new { @class = "btnDel" })</td>
+            </tr>
+        }
+    </table>
+
+    @Html.PagerAjax(@*"container"*@"con", this.ViewContext.RouteData.Values, Model.Config, "pager", "pager")
+@*</div>*@
+@*@Styles.Render("~/UserCss")*@
+<script type="text/javascript">
+    var id;
+    var cid;
+    @*alert("@this.ViewContext.RouteData.Values"+" @Model.Config");*@
+    $(".type").click(function () {
+        id = this.id;
+        $.get("@Url.Action("UserEdit", "Article")/" + this.id, null, function (data) {
+            if ($("#tabs").tabs('exists', "Article"+this.id)) {
+                $("#tabs").tabs('select', "Article" + this.id);
+            }
+            else {                            
+                $("#tabs").tabs('add', {
+                    title: "Article" + id,
+                    closable: true,
+                    content: data
+                });
+            }
+        });
+    })
+
+    $(".typew").click(function () {
+        cid = this.id;
+        $.get("/Article/UserAll/"+ cid, null, function (data) {
+            if ($("#tabs").tabs('exists', "Category" + cid)) {
+                $("#tabs").tabs('select', "Category" + cid);
+            }
+            else {
+                //alert(cid);
+                $("#tabs").tabs('add', {
+                    title: "Category" + cid,
+                    closable: true,
+                    content: data
+                });
+            }
+        })
+    })
+    //$(".btnDel").click(function () {
+    //    if (confirm("你确定要删除该文章吗？")) {
+    //        var url = $(this).attr("href");
+    //        $.post(url, null, function (data) {
+    //            if (data) {
+    //                alert("删除成功!");
+    //                window.location.reload();
+    //            }
+    //            else {
+    //                alert("删除失败！");
+    //            }
+    //        });
+    //    }
+    //    return false;
+    //});
+</script>

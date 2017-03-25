@@ -1,0 +1,31 @@
+﻿@model lzz博客.Models.Reply
+@Styles.Render("~/messageboard")
+<div>
+    <div>
+        @using (Html.BeginForm("RyUpdate", "Reply"))
+        {
+            @Html.ValidationSummary(true);
+            <div class="layui-input-block">
+                @*@Html.TextAreaFor(Ry=>Ry.ReplyContent, new { @placeholder = "说点什么..", @class = "layui-textarea" ,@id="textarea"+ViewData["id"] })
+                @Html.ValidationMessageFor(Ry => Ry.ReplyContent)*@
+                <textarea name="a" class = "layui-textarea" id="textarea"  placeholder = "说点什么.." ></textarea>
+            </div>
+            //+@ViewData["id"]
+            <div>
+                
+                <input type="hidden" name="time" value="@DateTime.Now">
+                @try
+                {
+                    <input type="hidden" name="user" id="nam" value="@HttpContext.Current.Request.Cookies["User"].Values["UserName"]">                    
+                }
+                catch
+                {
+                }
+            </div>
+            <div>
+                <input class="but" id='update+@ViewData["id"]' type="submit" value="修改" />
+            </div>
+
+        }
+    </div>
+</div>

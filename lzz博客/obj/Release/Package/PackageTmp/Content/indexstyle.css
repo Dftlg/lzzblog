@@ -1,0 +1,19 @@
+﻿body {
+}
+
+.Clt{
+    cursor:pointer;
+    font-size:22px;
+    color:royalblue
+}
+.flleft{
+    float:right;
+    font-size:14px;
+}
+.Len{
+    font-size:16px;
+    /*float:left;*/
+    margin:20px;
+    letter-spacing:1px;
+    
+}

@@ -1,0 +1,37 @@
+﻿@model PagerData<lzz博客.Models.Article>
+    @{int a = 0; }
+       
+    @foreach (var item in Model)
+    {
+            
+            <div class="Clt">@Html.ActionLink(@item.CommonModel.Title,"PartialDetail",new { Controller="Article",id= @item.ArticleId })</div>
+            @*<div ><a class="Clt" id="@item.ArticleId">@item.CommonModel.Title</a></div>*@ 
+            <br/>
+            <div class="Type"><div class="flleft">@item.CommonModel.ReleaseDate</div></div>
+            <div class="Len" id="num_@a">@Html.Raw(item.Content)</div>
+            <br/>
+        a++;
+        <hr/>
+    }
+@*</table>*@
+@Styles.Render("~/IndexStyle")
+@Html.PagerAjax("content1", this.ViewContext.RouteData.Values, Model.Config, "pager", "pager",true)
+<script>     
+
+    $(document).ready(function () {     
+        @*alert(@a);*@
+        for(var i=0;i<@a;i++)
+        {            
+            //var str=$("#"+i).text();
+            //str=str.replace(/<[^>]*>|/g,""); 
+            var string= $("#num_"+i).text();           
+            string=string.substring(0,100);
+            //$("#"+i).html("&nbsp&nbsp&nbsp&nbsp"+string);
+            $("#num_"+i).html("&nbsp&nbsp"+string);
+            
+            //alert(str);
+        }
+    })
+    
+</script>
+@*@Styles.Render("~/UserCss")*@

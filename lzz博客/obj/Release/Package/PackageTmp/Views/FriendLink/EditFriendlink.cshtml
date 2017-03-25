@@ -1,0 +1,59 @@
+﻿@model lzz博客.Models.FriendLink
+
+<div id="editfriendlink">
+<div class="workspace">
+    <div class="inside">
+        <div class="notebar">
+            <img alt="" src="~/Content/Default/User/Images/Icon/Article_16.png" />您现在的位置： 修改友链
+        </div>
+        <div >
+
+            @using (Ajax.BeginForm(new AjaxOptions
+            {
+                UpdateTargetId = "editfriendlink",
+                InsertionMode = InsertionMode.Replace,
+            }))
+            {
+                @Html.ValidationSummary(true)
+                <div class="formset">
+                    <dl>
+                        <dt>修改文章</dt>
+                        <dd>
+                            <div class="editor-label">
+                                @Html.HiddenFor(fl => fl.Linkid)                   
+                            </div>
+                        </dd>
+                         <dd>
+                            <div class="editor-label">
+                                @Html.LabelFor(fl => fl.Name ) (必填) @Html.DisplayDescriptionFor(fl => fl.Name)
+                            </div>
+                            <div class="editor-field">
+                               @Html.TextBoxFor(fl=>fl.Name)
+                            </div>
+                        </dd>
+                        <dd>
+                            <div class="editor-label">
+                                @Html.LabelFor(fl => fl.Href ) (必填) @Html.DisplayDescriptionFor(fl => fl.Href )
+                            </div>
+                            <div class="editor-field">
+                                @Html.TextBoxFor(fl => fl.Href )
+                            </div>
+                        </dd>
+                        <dd>
+                            <div class="editor-label">
+                            </div>
+                            <div class="editor-field">
+                                <input type="submit" value="确定" />
+                            </div>
+                        </dd>
+                                          
+                    </dl>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+   
+    </div>
+

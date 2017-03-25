@@ -1,0 +1,45 @@
+﻿
+
+<div id="westmenu" class="easyui-accordion">
+    <div title="文章管理" class="leftsidebar">
+        <ul>
+
+            <li @*class="ArticleAdd"*@>@Html.ActionLink("添加文章", "UserAdd", "Article", null, new { @class = "WestMenuLink" })</li>
+            @*<li >@Html.ActionLink("全部文章", "UserAll", "Article", null, new { @class = "WestMenuLink" })</li>*@
+            <li>@Html.ActionLink("全部文章", "UserAll", "Article", null, new { @class = "dataContent" })</li>
+            <li @*class="Comment"*@>@Html.ActionLink("评论管理", "UserComment","Article", null,new { @class = "WestMenuLink" })</li>            
+
+        </ul>
+    </div>
+    @*<div title="文章管理" class="leftsidebar">
+            <ul>
+                <li>@Html.ActionLink("添加文章","")
+            </ul>
+        </div>*@
+</div>
+<script type="text/javascript">
+    WestMenu();//右侧文章
+    $(".dataContent").click(function () {
+        var _link = $(this);
+        //alert(_link.text());
+        if ($("#tabs").tabs('exists', _link.text())) {
+            $("#tabs").tabs('select', _link.text());
+        }
+        else {
+            $.get(_link.attr("href"), null, function (data) {
+                // alert(_link.text());
+                //alert(data);
+                var apper = "<div class=con>";
+                apper += data;
+                //alert(apper);
+                apper += "</div>";
+                $("#tabs").tabs('add', {
+                    title: _link.text(),
+                    closable: true,
+                    content: apper
+                });
+            });
+        }
+        return false;
+    });
+</script>

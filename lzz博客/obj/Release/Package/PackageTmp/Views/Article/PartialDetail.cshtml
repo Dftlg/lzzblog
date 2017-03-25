@@ -1,0 +1,84 @@
+﻿@model lzz博客.Models.Article
+    @{
+        ViewBag.Title = @Model.CommonModel.Title;        
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+<div class="row">
+        <div class="lefcon col-md-9 col-xs-12">
+            <div class="title">@Model.CommonModel.Title</div>
+            <div class="text">@Html.Raw(Model.Content)</div>
+            <div class="Info"><div class="infostyle">发布时间：@Model.CommonModel.ReleaseDate.ToLongDateString() 阅读：@Model.CommonModel.Hits</div> </div>
+            <br/><hr/>
+            <div class="rylist">
+            </div>
+            <div class="ryadd">
+                 @Html.Action("RyAdd","Reply")
+            </div>
+            @try{
+                    <input type="hidden" name="user" value="@HttpContext.Current.Request.Cookies["User"].Values["UserName"]">
+                 }
+                catch
+                {
+                    <input type="hidden" name="user" value="nouser">
+                }
+        </div>
+        <div class="righcon col-xs-3 visible-lg visible-md">
+            <div id="pic">
+                <embed src="~/Content/hamster.swf" width="200"  />               
+            </div>
+            <div id="timepicker">
+                <div class="datepicker ll-skin-latoja" id="datepicker1"></div>
+            </div>
+            <div id="fdlink">              
+            </div>
+            <hr/>
+        </div>
+    @*<a class=update id=update" + lists.id + " href=javascript:void(0)>修改</a>*@
+</div>
+@Styles.Render("~/Articlecss")
+@Scripts.Render("~/Rylistrpjs")
+@Styles.Render("~/latoja")
+
+<script>
+    $(function () {
+        $("#datepicker1").datepicker({
+            inline: true,
+            showOtherMonths: true,
+            viewMode: 'years'
+        });
+    });
+    $(document).ready(function () {        
+        var Arid=window.location.pathname;
+        var number = Arid.lastIndexOf("\/");       
+        Arid = Arid.substring(number + 1, Arid.length);       
+        $.ajax({
+            type: 'get',
+            dataType: 'json',
+            url: '/Reply/Rylist/'+Arid,
+            data: {},
+            success: function (data) {
+                $(".rylist").empty();
+                $.each(data, function (index, lists) {                   
+                    $(".rylist").append("<div class='ry" + lists.id + " stle' ><div class='top row'><div class='col-xs-11'><div class=rytime>" + lists.replytime + "  by</div> <div class=ryus>" + lists.user + "</div></div> <div class='col-xs-1'><a class=delete id=delete" + lists.id + " href=javascript:void(0)>删除</a></div></div> <div class='rycon row' id=rycon" + lists.id + ">" + lists.content + "</div><div class=cone></div></div>")
+                })
+            }
+        })
+    })
+    $(document).ready(function () {
+        $.ajax({
+            type: 'get',
+            dataType: 'json',
+            url: '/FriendLink/Listlink',
+            data: {},
+            success: function (data) {
+                $("#fdlink").empty();
+                $("#fdlink").append("<div id=flk>友情链接</div>")
+                $.each(data, function (index, lists) {
+                    $("#fdlink").append("<div class='row frirow'><div class='listst col-xs-12'><a class=frlistype href=" + lists.Href + ">" + lists.Name + "</a></div></div>")
+                })
+            }
+        })
+    })     
+</script>
+
+@*@Scripts.Render("~/datetime")*@

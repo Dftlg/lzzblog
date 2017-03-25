@@ -1,0 +1,413 @@
+一、WIN.INI的基本构成 
+
+
+WIN.INI文件包含若干小节，每一节由一组相关的设定组成。WIN.INI文件中小节和设定的格式如下： 
+
+[小节名] 
+
+关键字名=值 
+
+其中：小节名必须用中括号([])括起，且左括号必须在屏幕的最左一列，文件中可以包含注释，每一行注释以分号(；)开始。 
+
+WIN.INI中的主要小节名及含义如下： 
+
+? [Windows]：影响Windows操作环境的部分，包括在启动Windows时执行哪一个应用程序，警告声音的设置、窗口边框的宽度、键盘响应的速度、鼠标器设置以及将文件定义为文档或程序等。 
+
+
+? [Desktop]：控制系统界面显示形式及窗口和鼠标器的位置。 
+
+? [Extensions]：联结特定的文件类型与相应的应用程序。 
+
+? [Intl]：描述怎样为除美国外的其它国家显示有关的文件项目。 
+
+? [Windows Help]：列出有关HELP窗口及对话窗的默认尺寸、布局、文本颜色等设置。 
+
+? [Font Substitue]：列出Windows可识别的互换字体。 
+
+? [TureType]：使用和显示TrueType字体的可选设置。 
+
+? [Sounds]：为每个系统事件设计的声音文件列表。 
+
+? [MCI Extensions]：把MEDIA控制接口设备同特定文件类型联系起来。 
+
+? [Compatibility]：用于解决Windows 98和Windows 3.x之间的差异所引起的兼容性问题。 
+
+? [Compatibility32]：用于解决Windows 98和Windows 3.X之间的差异所引起的32位磁盘存取兼容性问题。 
+
+? [MCI Compatibility]：用于Windows 98中文版的MCI设备兼容性问题。 
+
+? [Module Compatibility]：用于Windows 98中文版的模块兼容性问题。 
+
+? [IME Compatibility]：用于Windows 98中文版的输入法与应用程序的兼容性问题。 
+
+? [Pscript.Drv]：描述PostScrip打印机的ATM字库状况。 
+
+? [Fonts]：描述Windows装入的屏幕字体文件。 
+
+? Embedding：列出目标联接与嵌入(OLE)使用的服务器目标。 
+
+? [Colors]：定义Windows的显示颜色。 
+
+? [PrinterPorts]：Windows将要访问的激活或非激活的输出设备。 
+
+? [Ports]：描述中文Windows 98的可用端口。 
+
+? [Mail]：描述Microsoft Mail以及Microsoft Exchange的使用参数。 
+
+? [Devices]：与旧版本Windows的应用程序兼容的激活输出设备。 
+
+? [Programs]：当用户打开多个数据文件时，该段可为Windows查找相应程序文件提供附加的路径。 
+
+? [Associated CharSet]：描述Windows 98中文版使用字符集状态和西文字体所对应的缺省中文字体。 
+
+? [Windows Telephony]：描述Windows 98中文版的Microsoft Exchange的电话号码初始化日期和时间。 
+
+? [Paintbrush]：描述Windows 98中文版的“画图”(PaintBrush)的省略图片格式。 
+
+? [MAPI 1.0 Time Zone]：描述MAPI 1.0的时区设置参数. 
+
+二、WIN.INI配置选项详解  
+中文Windows 98第一次启动时会自动建立WIN.INI文件，并把这些设定置成缺省值，因此，下列某些设定可能没出现在WIN.INI文件中。  
+1、[Windows]  
+[Windows]节包含了影响Windows环境整个范围的设定。例如启动Windows后首先运行哪个应用程序以及信息如何出现在屏幕上等，其中绝大多数内容可由控制面板设置。  
+(1)Beep=YES/NO(缺省值：YES)：缺省时，该设置可使中文Windows 98在用户出现操作错误时发出嘟嘟的警告声，BeeP=NO则将此功能关闭。  
+(2)Cooltch=0/1(缺省值：1)：缺省时，该设置可使用Alt＋Tab和Alt＋Shift＋Tab两组合键打开Cooltch开关进行程序切换，这时Windows 98会在屏幕中央弹出一个窗口，显示要切入的程序名和图标。Alt＋Tab与Alt＋Shift＋Tab的切换应用程序的顺序相反。若关闭Cooltch开关，则当用户切换程序时，Windows就会显示程序的标题条与窗口边界(或图标和图标的名称)，但打开Cooltch开关能加快程序间的切换速度。  
+(3)CursorBlinkRate=毫秒值(缺省值：530)：该设置用于控制中文Windows 98的光标在文本文档、电子报表单元以及其它编辑区域内的闪烁速度。若您觉得光标影响自己的注意力，则可减低它的闪烁频率；假如在屏幕上很难发现光标，则可提高它的闪烁频率。修改方法为：打开控制面板中的“键盘”图标，调整“键盘属性”中的“光标闪烁频率”框中的游标。“键盘属性”对话框的游标调整范围为200～1200(这些数字在控制面板上是看不见的)。当设置为200时，光标闪烁速度极快;为1200时，则光标几乎不动。用户也可以直接修改WIN.INI，设置该范围以外的频率闪烁数值，例如，为“光标闪烁速度”设置一个很大的数字，如5000，使光标停止闪烁，但实际上此法不可取，因为光标亮的时间越长，它灭的时间也就越长，因此用户最好还是按照控制面板提供的范围进行设置。  
+(4)DefaultQueueSize=数值(缺省值：8)：此设置用于指定在一个应程序的消息队列内可容纳的最多消息数。该设置主要是为那些需要在不同条件下测试自己的应用程序的开发人员准备的，普通用户无需修改此设置值。  
+(5)DEVICE=输出设备名，设备驱动程序，使用的输出端口：根据控制面板中“打印机”图标定义当前系统默认的打印机设置，该行参数由三部分组成的，各部分之间以逗号分开，例如：  
+Device=HP LASERJET SERIES Ⅱ，HPPCH，LPT1：  
+其中：第一部分为打印机名，它与应用程序的打印机选择对话框中的定义是一致的，该名称必须与WIN.INI文件的[Devices]段中的某一输入项一致；第二个参数为打印机驱动程序，但不带后缀.DRV；第三个参数为默认的打印机接口，该参数必须与WIN.INI文件中的[Ports]段内某一输入项一致。  
+(6)DeviceNotSelectedTimeout=秒(缺省值：15)：通过该项，能设置中文Windows 98等待打印机联接的时间，若超过此时间打印机仍未联接好，系统将给出错误信息。  
+(7)Documents=扩展名(缺省值：无)：该项主要用于中文Windows 98的文档文件的扩展名。扩展名之间以空格分隔。例如：Documents=TXT BAT PRG 123，则带这些扩展名的文件都将被Windows 98看作文本文件。  
+若WIN.INI文件中的“Documents=”行中的扩展名也出现在[Extensions]段中，则最好删除“Documents=”行的设置，因为Windows系统自动将[Extensions]段中的扩展名作为文档文件的扩展名。  
+(8)DOSPrint=YES/NO(缺省值：NO)：该设置使Windows 98直接把打印机输出内容送到硬件接口，而不再通过MS－DOS的21H中断，提高了系统的速度，但要求硬件完全兼容。  
+若用户需要从MS－DOS 7.0而不是从Windows 98中打印(已经正确安装了Windows打印机驱动程序)，则应将该行设置为YES，然后打开控制面板的“打印机”图标，再选择任一已经安装的打印机驱动程序图标，如HP LaserJet 4L，选择“打印机”菜单中的“属性”选项，选择“详细资料”，再选择“后台打印设置”按钮，然后清除“直接输出到打印机”复选框的设置。  
+(9)DoubleClickHeight=像素值(缺省值：4)：该设置指定双击鼠标器时在两次按揿之间鼠标指针移动的高度(以像素计)。如果鼠标指针向上或向下移动太远，双击将被看成是两次单独的按揿。超过5个像素则被认为双击失效。设定值为奇数，会被认作小于该奇数的最相近的偶数。如果使用笔或板指示设备，此设定将非常有用。  
+(10)DoubleClickWidth=像素值(缺省值：4)：该项与DoubleClickHeight的用法类似。  
+(11)DoubleClickSpeed=毫秒(缺省值：452)：此设置用于定义双击鼠标键间的最大时间间隔。若两次按揿鼠标器键的时间间隔超过了此设定值，则Windows 98将其作为两次单独按揿鼠标键的操作。若要修改此设定值，可打开控制面板的“鼠标器”图标，调整“双击速度”。  
+(12)KeyboardDelay=毫秒(缺省值：2)：此设置用于指定一次击键过程的最长时间。也可通过控制面板的“键盘”来进行调整。  
+(13)KeyboardSpeed=数值(缺省值：31)：该值为按住某一键时，键盘重复接收该键信息的速度。参数值越高，键盘重复接收的速度就越快，其中31是系统可接收的最高值。修改方法也可通过控制面板的“键盘”来调整“重复率”。  
+(14)Load=<文件名>(缺省值：无)：此设置用于指定启动Windows 98时执行的应用程序。若该程序不在Windows目录、SYSTEM目录或其它以DOS的PATH命令设置的目录中，则应加上它的路径。若有多个程序名，则用空格分开。“Load=”行中还可以设置兼容的旧版Windows程序，也可以将某一个应用程序的安装例程加入到该行中，或者加在“Run=”行中。若使用资源管理器(Explorer)作为Windows SHELL，则用户就不必再在该行中设置启动程序，而只需将该程序图标移入到“启动”程序组中即可。  
+但用户使用的SHELL若不是资源管理器，则应该在“Load=”行中指定启动程序。文件管理器(执行文件名为WINFILE.EXE)、Norton Desktop for Windows 98以及其它SHELL程序，如中文之星2.0＋(CSTAR20.EXE)在启动时都要检查“Load=”行中的设置信息，并按设定项装入指定的程序，但并非所有的SHELL程序都具有此功能。  
+(15)MenuDropAlignment=0/－1(缺省值：0)：该设置指定菜单打开时相应其标题是左对齐还是右对齐。设定值为0，菜单以左对齐方式打开；设定值为1，菜单以右对齐方式打开。  
+(16)MenuShowDelay=毫秒数(缺省值：对于80386以上计算机为0，对于80286计算机为400)：该行定义Windows 98下拉菜单从被选中到显示之间的时间间隔。当鼠标器在已打开的下拉菜单的菜单条上滑动时，可避免菜单显示的抖动，若鼠标器在菜单拉下之前就已滑过，则不再显示该菜单。若您觉得延迟时间过长，可减少此设置值。  
+(17)MouseSpeed=0/1/2(缺省值：1)  
+(18)MouseThreshold1=像素值(缺省值：5)  
+(19)MouseThreshold2=像素值(缺省值：10)  
+以上设置可控制鼠标器的加速功能。若MouseSpeed设置为0，则鼠标器和箭头的移动速度相同。若MouseSpeed设置1，则鼠标器移动可得到一级加速，也就是即当鼠标器在两次中断之间移动的距离超过MouseThreshold1个像素点时，箭头的移动速度是鼠标器的2倍。若MouseSpeed为2，则当鼠标器在两次中断之间移动的距离超过MouseThreshold2个像素点时，箭头移动的速度为鼠标器的4倍。调整这些设置最简单的方法就是选择控制面板中的“鼠标器”图标的选项。  
+(20)MouseTrails=数值(缺省值：0)：当MouseTrails设置为1～7之间的数字时，Windows 98将显示鼠标器箭头在屏幕划过的轨迹图像。不同的参数值对应不同的显示轨迹长度。中文Windows 98为该设置提供的唯一显示驱动程序可用于EGA、VGA和Super VGA。用户也可通过修改控制面板中的“鼠标器”图标来修改该设置。  
+但“鼠标器”窗口中若没有“鼠标踪迹”选项或“鼠标踪迹”选项以灰色显示，用户就需要编辑WIN.INI文件了，该设置有利于用户从LCD显示器上捕捉鼠标器箭头的轨迹。  
+(21)NetWarn=0/1(缺省值：1)：当NetWarn设置为1时，若用户在网络不可用的情况下启动一个需要运行在网络上的Windows应用程序，系统将显示一个警告信息。为0则关闭此项功能，也可通过“控制面板”进行修改。  
+(22)Programs=扩展名(缺省值：COM EXE BAT PIFSCR)：该设置定义Windows 98把哪些文件看成是应用程序。扩展文件名用空格隔开且不包括前面的点。例如：  
+Programs=CGJ 123 456 789  
+只有在该行中作过说明的文件类型才能在中文Windows 98系统中运行。因此，只要将“Programs=”行中的EXE扩展名删除，就可导致系统无法运行。若该行中包括PIF，则用户可以从资源管理器或文件管理器中运行一个.PIF文件来启动相应的DOS应用程序。  
+(23)Run=文件名(缺省值：无)：此设置使中文Windows 98启动后运行一个或多个指定的应用程序。所取值是由空格隔开的一个或多个应用程序的文件名或者与应用程序相关联的文档名的列表。如果应用程序或文档不在Windows目录下，则必须指定路径。  
+与“Load=”相类似，若用户使用的SHELL程序不是程序管理器，可用“Run=”行来指定启动程序。  
+(24)ScreenSaveActive=0/1(缺省值：0)：此设置决定中文Windows 98在系统闲置时是否激活它的某个屏幕保护程序。默认状态为关闭屏幕保护程序。可通过“控制面板”中的“显示器”中的“屏幕保护程序”来修改此项功能。若系统使用的是其它屏幕保护程序，如AfterDark，则应关闭此功能。  
+(25)ScreenSaveTimeout=秒(缺省值：120)：此设置用于定义中文Windows 98系统闲置时等待激活它的某个屏幕保护程序的最长时间，也可通过“控制面板”进行修改。  
+(26)Spooler=YES/NO(缺省值：YES)：缺省值是指由打印管理器来管理打印机。若将此设置改为NO，中文Windows98可以更快地进行打印，但是每次只能进行一项打印工作。  
+(27)SwapMouseButtons=0/1(缺省值：0)：此设置用于指定中文Windows 98的鼠标键。SwapMouseButtons为0，则鼠标器左键为主键。可通过“控制面板”来进行修改。  
+(28)SkipMouseRedetect=0/1(缺省值：0)：此项用于设置中文Windows 98的鼠标键。SwapMouseButtons为0，则鼠标器左键为主键。可通过“控制面板”来进行修改。  
+(29)TransmisionRetryTimeout=秒(缺省值：5)：此设置用于定义中文Windows 98在向打印机传送数据时，等待应答的最长时间。若使用的是PostScrip打印机，则Windows 98将用TransmisionRetryTimeout参数设置的2倍时间进行等待。若时间超出了仍无应答，则中文Windows 98系统将显示超时错误。若要取消某一打印机的默认设置，则需修改WIN.INI文件中的[PrinterPorts]段中的有关打印机的RetryTimeOut参数设置。  
+
+
+--  作者：adiao 
+--  发布时间：2004-12-16 10:07:50 
+
+--   
+
+2、[Desktop]  
+[Desktop]小节包含控制屏幕背景(即桌面)外观以及窗口和图符在屏幕上位置的一些可选设定。这些设定中的绝大多数可用控制面板进行管理。  
+(1)GridGranularty=数值(缺省值：0)：本行用于设置中文Windows 98中应用程序的窗口位置。若GridGranularty为非零值，则程序窗口就会对应某一个图像栅格。参数值范围在1～49之间。GridGranularty的取值每增加1，图像栅格就会加大8个像素点，当用户需要为图标或文本窗口精确布局时，可调用该功能。  
+(2)IconSpacing=像素数(缺省值：77)：本设置定义了Windows 98在程序管理器的“窗口”菜单中图标之间的水平间隔距离。  
+(3)IconTitlefaceName=字体名(缺省值：MS Sans Serif)：该设置指定Windows 98中图标的标注字体。若要另外指定字体，可参考WIN.INI的[Fonts]段内列出的字体清单。  
+(4)IconTitleSize=数值(缺省值：8)：该设置指定Windows 98中图标标注的文本字体尺寸。若在高分辨率显示器上看不清图标标注字体时，就可通过增大IconTileSize的值来增大字体。  
+(5)IconTitleWrap=0/1(缺省值：1)：该设置可使Windows 98在需要时将长的图标标注分成两行或三行显示，以适应IconSpac ing定义的空间大小。若不需要，则清除控制面板内“桌面”对话窗中的“图标”框的“标题换行”(Wrap Title)复选框。  
+(6)IconVerticalSpacing=像素数：该设置定义了中文Windows 98在响应“排列图标”命令时图标之间在垂直方向的像素数。缺省值是通过IconTitleSzie设置和显示驱动程序来共同确定的。该设置值只能在WIN.INI文件中修改。  
+(7)Pattern=b1 b2 b3 b4 b5 b6 b7 b8(缺省值：无)：本行用于记录控制面板内“显示器”属性中的“背景”页里定义的Windows 98桌面的背景图案。这些数字表示一个高和宽都为8个像素点的矩阵。要修改此图案，只需修改控制面板的“显示器”属性即可。在“背景”页中，用户既可选下拉列表中的图案，也可自己设计。  
+(8)TitleWallPaper=0/1(缺省值：0)：本设置用于确定中文Windows 98的当前背景是放置在屏幕中心(默认状态)还是贴满屏幕。此设置可通过修改控制面板“显示器”属性的“背景”页的“居中”(0)和“平铺”核实框来改变。  
+(9)WallPaper=文件名(缺省值：无)：本设置把指定的文件作为Windows 98的当前背景位图。修改该设置的方法为：进入控制面板“显示器”属性中的“背景”页，单击“浏览”按钮，出现“浏览壁纸”对话框，在“文件名”列表框中选择壁纸文件名，如circiles.bmp等。  
+(10)WallPaperOrignX=数值(缺省值：0)  
+(11)WallPaperOrignY=数值(缺省值：0)：WallPaperOrignX对应屏幕左上角的水平偏移量，WallPaperOrignY对应屏幕左上角的垂直偏移量(均以像素点为单位)。上述设置缺省值时，将从屏幕的左上角开始，以屏幕中心对称粘贴背景并贴满全屏。若WallPaperOrignX和WallPaperOrignY为非零值，从该坐标开始粘贴背景时，以左上角开始计算背景中心点，这样可能会影响中心对称的背景。  
+(12)PreCacheCharacters=字符串  
+(13)GroupPreCacheChars=字符串  
+这两个设置主要是为了使中文Windows 98更快速地在屏幕上显示指定的字符，如组标题和组中程序项(如文件管理器等)中的汉字等。中文Windows 98将根据这些中文字符来设置缓冲区的大小。  
+
+
+3、[Extensions]  
+[Extensions]段中可包含多个如下格式的设置行：  
+Extensions=命令行  
+每一行都将一类文档与应用程序联接起来。例如，将.INI文件与中文Windows的记事本(Notepad)联接起来，则设置行为：Extensions=Notepad^.ini  
+当用户运行一个扩展名已在该行中设置好的文档时，Windows 98将启动相应的应用程序装入文档。用户可在文件管理器窗口中双击鼠标来运行一个文件，也可以在其它SHELL程序中选择“文件”菜单中的“运行”命令来运行。  
+注：一个应用程序可以联接多个扩展名，而一个扩展名却只能联接一个应用程序，Windows 98的配置程序(Runonce)可以自动建立这种联系。在用户的[Extensions]段中也许已经包含了.WRI、.TXT等扩展名。另外，其它应用程序的安装程序，如中文WORD 5.0、6.0的安装程序SETUP也会修改此段，并将它所要打开的扩展名，例如.DOC、.TXT等放在此段中。  
+4、[Intl]  
+[Intl]小节用于记录Windows 98的有关数字、日期、时间等显示格式。以i开头的设置为整数，以s开头的设置为字符串(文本)，该节可通过控制面板的“区域设置”属性来设定。默认值全部为美国习惯用法。  
+某些从DOS环境移植入Windows 98的应用程序带有自己的扩展国际格式命令，并可能自动在WIN.INI文件中进行设置。例如，LOTUS 1－2－3 for Windows就是一个很好的例子。  
+(1)iCountry=国家代码(缺省值：1)：此设置指定用户在Windows 98中采用哪个国家的标准设置。国家代码为该国家的国际电话代码(加拿大除外)。加拿大国家代码为2，1为美国。  
+(2)iCurrDigits=数值(缺省值：2)：此设置指定Windows 98的货币格式数值中十进制分隔符右边应出现的数字个数。根据iCountry的设置，该小数点可以是句点，也可以是逗号。  
+(3)iCourrency=数值(缺省值：0)：此设置用于指定Windows 98的货币符号位置。符号本身由sCurrency设定。设置为0时，符号在数字前；为1时，符号在数字后;为2时，符号放在数字前且符号与数字之间隔一个空格；为3时，不显示货币符号。  
+(4)iDate=数值(缺省值：根据iCountry设置)：设置用于指定Windows 98使用的日期格式。0代表(mm/dd/yy)，1代表(dd/mm/yy)，2代表(yy/mm/dd)。  
+(5)iDigits=数值(缺省值：2)：此设置用于指定在Windows 98的数值中的小数点个数。  
+(6)iLZero=0/1(缺省值：0)：此设置用于指定是否在纯小数的小数点左边加0。  
+(7)iMeasure=0/1(缺省值：1)：此设置用于选择公制(0)或英制(1)测试标准。  
+(8)iNegCurr=数值(缺省值：0)：此设置用于控制负货币值的显示。货币符号和十进制分符隔符由sCurrency和iCurrency设定，具体如下：  
+设置值 　 显示格式　 　　　设置值　　显示格式  
+0　　　　(￥122223.45) 　 1　　 　　－￥1234.45  
+2　　　　￥－123.45　　　 3　　 　　￥123.45－  
+4　　　　(123.45￥)　　　 5　　　　 －123.45￥  
+6　　　　123.45－￥　　　 7　　 　　23.45￥－  
+8　　　　－123.45￥　　　 9　　 　　－￥123.45  
+10　　　 123.45￥－  
+(9)iTime=数值(缺省值：0)：此设置用于选择12小时(0)或24小时(1)的计时方式。  
+(10)iTLZero=数值(缺省值：0)：此设置用于指定单数字时间值前是否加0，若加0，则应设置为1。  
+(11)s1159=字符串(缺省值：AM)：此设置用于指定中午12点前的12小时内，在时间值后面应显示的字符。有些程序，如Excel，只使用指字符串的前四个字符。  
+(12)s2359=字符串(缺省值：PM)：此设置用于指定中午12点后的12小时内，在时间值后面应显示的字符。  
+(13)sCountry=字符串(缺省值：美国)：此设置说明用户系统使用的是哪个国家的标准值。  
+(14)sDecimal=字符串(缺省值：)：此设置用于选择十进制分隔符。  
+(15)sLanguage=字符串(缺省值：ENU)：此设置用于说明用户选择的标准语言。有些Winows应用程序将根据此设置信息决定排序的顺序或选择适当的拼读检查程序。下面列出了所有参数值。  
+　　数值　　语 言　　　　 参数值　　 语　言  
+　　DAN　　 丹麦语　　　　 DEU　　 　德语  
+　　ENG　　 国际英语　　　 ENU　　 　美国英语  
+　　ESN　　 现代西班牙语　 ESP　 　　Casrilian西班牙语  
+　　FIN　　 芬兰语　　　　 FRA　　 　法语  
+　　FRC　　 加拿大的法语　　 ISL　　 　冰岛语  
+　　ITA　　 意大利语　　　 NLD　 　　荷兰语  
+　　NOR　　 挪威语　　　　 PTG　 　　葡萄牙语  
+　　SVE　　 瑞典语　　　　 CHS　 　　汉语  
+(16)sLis=字符串(缺省值：，)：此设置用于选择分隔清单中各项目的标点符号。  
+(17)sLongDate=格式(缺省值：dddd,mmmm,dd,yyyy)：此设置用于选择长日期格式。下面列出了可使用的各符号及其含义。  
+符号　　含　　义　　　　　　符号　　 含 义  
+d　　　不带首位0的日期　　　dd　　　 带首位0的日期  
+ddd　　缩写的星期名　　　　 dddd　　 完整的星期名  
+m　　　不带首位0的月份号　　mm　　　 带首位0的月份号  
+mmm　　缩写的月份名　　　　 mmmm　　 完整的月份名  
+yy　　 两位数字表示的年份　 yyyy　　 四位数字表示的年份  
+(18)sThousand=字符串(缺省值：，)：当数值大于999时，应使用标点符号将其按3位一组进行分组。此设置用于选择该分隔符号。  
+(19)sTime=字符串(缺省值：)：此设置用于指定时间值中间的标点符号。  
+
+
+5、[Windows Help]  
+该节记录了有关Windows的帮助(Help)窗口及其对话窗口的尺寸和布局的设置项，包含显示Help宏(Macro)、弹出窗口(用于定义术语)和信息屏幕的文本颜色。  
+(1)M－WindowsPosition=[左上角X坐标，左上角Y坐标，宽，高，0/1]：此设置用于指定主帮助窗口的默认位置和尺寸。前两个参数描述了窗口左上角的(X，Y)坐标，高和宽是指窗口的宽度和高度(以像素为单位)。若窗口被最大化显示，则第五个参数为1，反之为0。这五个参数都包括在方括号内。通过本行可直接控制Help窗口的显示方式，当退出Windows 98中文版时，WINHELP程序可自动修改WIN.INI文件，而不必再编辑WIN.INI文件中的本行内容。  
+(2)H－WindowsPosition=[左上角X坐标，左上角Y坐标，宽，高，0/1]：此设置用于指定Windows 98的帮助系统中历史(Hostory)对话窗的默认位置和尺寸，其参数的使用与M－WindowsPostion中类似，但第五个参数不能为1，因为历史对话窗不能被最大化显示。  
+(3)A－WindowsPosition=[左上角X坐标，左上角Y坐标，宽，高，0/1]：此设置用于指定Windows 98的帮助系统中标记定义(Annoate)对话窗的默认位置和尺寸，其参数的使用同M－WindowsPostion中类似，第五个参数无效。  
+(4)C－WindowsPostition=[左上角X坐标，左上角Y坐标，宽，高，0/1]：此设置用于指定Windows 98帮助系统中拷贝(COPY)对话窗的默认位置和尺寸，其参数的使用与M－windowsPostion类似，第五个参数无效。  
+(5)IfJumpColor=r g b：此设置用于指定WINHELP程序中“跨文件”(Inter－File)的跳转文本颜色。单击跳转文本时，系统将从另外一个帮助文件中调出新的信息窗。以上三个参数表示红、绿、蓝三种颜色。IfJumPColor的取值范围在0～255之间。若显示卡无法显示设置的颜色，Windows 98将使用最接近的一种纯色来代替。要修改此设置，需编辑WIN.INI文件，第一次修改设置时可能会发现该行被略去，此刻用户只要加入该行即可，若要恢复原始颜色的设置，可将该行删除或只删除后面三个参数。  
+(6)IfPopupColor=r g b：此设置用于指定WINHELP程序中“跨文件”(Inter－File)弹出的热文本(Hot Test)颜色。单击该文本，屏幕可生成一个从其它文件中调出的弹出窗口。这里参数的使用方法与IfJumpColor中的类似。  
+(7)JumpColor=r g b：此设置用于指定WINHELP程序中“跨文件”(Inter－File)跳转文本的颜色。单击该文件，屏幕将显示从同一个帮助文件中调出的另一个信息窗，这里参数的使用方法与IFJumpColor中的类似。  
+(8)MacroColor=r g b：此设置用于运行一个HELPFILE宏的文本颜色。其参数使用方法与前面类似。  
+(9)PopupColor=r g b：此设置用于指定Windows 98的WNHELP程序中“跨文件”(Inter－File)弹出的热文本颜色。单击该文本，屏幕将生成一个常用于定义条目的弹出窗口，这里的参数使用方法与前面类似。  
+6、[Windows帮助]  
+该节与[Windows HELP]对应，其参数设置相同。 
+
+
+7、[Ports]  
+该节列出了系统中的串行接口和打印机接口，以及在串行上的通讯参数设置。最多可列出10个接口。  
+通过控制面板的“端口”对话窗，用户可以设置其中的通讯参数。WIN.INI将使用下面的语法记录所有的用户设置：  
+PortName：=波特率，奇偶性，字长，停止位。[[,p]  
+[Ports]段可以包括以下内容：  
+(1)LPTN：=：用于说明一个并行打印接口，在这里必须使用冒号和等号，该行无参数设置。  
+(2)EPT：=：用于说明一台IBM Personal Pageprinter打印机。该行无参数设置。  
+(3)FILE：=：用于定义向磁盘输出，该行无参数设置。若当前打印机联向一个名为FILE：的接口，则Windows将提示用户输入文件名，然后把内容直接向该文件输出。用户可使用FILE MANAGER或COPY命令将此文件的内容送到一台实际打印机上打印出来。  
+(4)Filename.ext=：用于指定向某一特定文件输出，在这种情况下，Windows将不向用户作出提示。  
+(5)LPTn.ext=：用于取消Windows 98直接向接口打印输出的打印方法。例如，要通过MS DOS的21H中断向1号并行口打印，则应设置为：LPT1.DOS=，此处接口后不要带冒号且该行无设置参数。在该设置行中扩展名对设置无影响，实际上，该行与中文Windows 3.1以上版本中的LPT1.DOS的意义是相同的。由于LPT1.DOS名中不含冒号，故Windows把它看作一个文件，并将输出定向到上述文件名，与DOS中把输出定向到普通磁盘文件中的过程是十分类似的，但是，DOS会把文件名中前四个字符作为一个打印设备，并照此处理数据，其结果就是通过DOS中断直接向打印机输出。  
+8、[FontSubstitutes]  
+该节用来提供Windows 98系统的字体别名清单，段中每一个设置按如下格式书写：  
+字体名=字体名  
+中文Windows 98一般包括以下4个缺省设置：  
+[FontSubstitutes]  
+Helv=MS Sans Serif  
+Tms Rmn=MS Serif  
+Times=Times New Roman  
+Helvetica=Arial  
+其中：Helv和Tms Rmn是Windows 98以前版本的点阵字体。在Windows 98中它们的等效字体分别为MS Sans Serif和MS Serif。例如，若用户从中文Windows 98中打开Windows 3.0中建立的使用Helv字体的文档，则Windows 98将用MS Sans Serif字体代替Helv。  
+若Windows 98中仍有显示点阵字体的文档，则系统会将它们替换成等效的TrueType字体文档，并给所有外来文档中的字体命名，使它们与TrueType字体建立转换关系。  
+注：若在一个应用程序的字体窗口输入系统中的非TrueType字体名，Windows 98仍可正确显示该字体。另外，在WIN.INI中的[FontSubstitutes]段说明的都是非TrueType字体，而不是TrueType的等效字体。  
+
+9、[TrueType]  
+WIN.INI的[TrueType]段是中文Windows 98所特有的内容，因为中文Windows 98是第一个使用TryeType字体的Windows版本。微软公司把TrueType字体拿来与PostScript字体进行竞争。这两种字体都可按比例进行构造，即可放大缩小、转向、以及用其它标准静态字体无法提供的方式实施处理。  
+(1)OutlineThreshold=Pixels－per－em(缺省值：256)：此设置用于定义一个“CrossVer”点，在该点通过调用图形设备接口GDI(Graphics Device Interface)将TrueType字符由轮廓变为点阵。若在这里使用TrueType光栅处理器，则处理速度加快。  
+该值设置太高，可能无法生成大尺寸字符，即打印页面上应该有字符的地方出现了空白，这时就需要编辑WIN.INI文件，将OutlineThreshold设置值降低。微软公司建议将该值设置在300以下。  
+(2)TTEnable=0/1(缺省值：1)：此设置用于确定中文Windows 98是否提供TryeType字体，缺省为提供。  
+(3)TTIfCollisions=0/1(缺省值：0)：当中文Windows 98的TrueType字体和非TrueType字体的名称相同而且字符集一样时，此设置可确定Windows 98使用哪种字体。缺省为使用非TrueType字体。  
+(4)TTOnly=0/1(缺省值：0)：此设置用于指定在应用程序的字体对话窗中是否仅显示中文Windows 98 TrueType字体。缺省时，将为应用程序提供系统支持的所有字体。Windows 98的内建TrueType字体十分出色，当坐标点尺寸在4～127之间时，它都能显示，并且在打印机中也可以安装该字体以产生真正的“所见即所得”输出。若用户喜欢TrueType字体，则可修改该设置，使Windows 98只显示这种字体。  
+修改方法：打开控制面板的“字体”图标，选择“查看”菜单中的“选项”命令，在“选项”对话框中选择“TrueType”页，并选中“本机的程序只使用TrueType字体”复选框。  
+10、[Sounds]  
+[Sounds]段用于记录中文Windows 98控制面板的“声音”对话窗内与声音文件建立联系的系统事件。本小节设置的一般格式为：  
+系统事件=文件名，描述  
+下面是一个典型的设置行：  
+SystemStart=C:\\WINDOWS\\MMDATA\\GONG.WAV,SystemStart  
+该行中，Windows 98的系统事件为SystemStart，与之相联的WAVE格式文件为GONG.WAV，GONG存放在C:\\Windows\\MMDATA目录中。当SystemStart事件发生时，Windows 98将播放指定的WAVE格式文件。该行的最后一个参数是控制面板“声音”属性窗口的“事件”列表框中对有关事件的描述。一般情况下，最后一个参数和该行开头的关键字相同，但用户在需要时也可以更改。例如，可将SystemStart改为Startup。在一般情况下，用户只需在控制面板中将事件和声音文件设置好，系统就会自动修改WIN.INI文件，故系统没有其它特殊的原因就不要去编辑[Sounds]段。  
+在播放.WAV文件之前，微机中必须安装有可支持中文Windows 98的声卡，或运行微软公司的扬声器驱动程序，若没有这两种设备，则控制面板中的“声音”属性窗的“事件”和“文件”列表框将以灰色显示，而且WIN.INI文件中的[Sounds]节也可能消失。  
+11、[MCI Extensions]  
+[MCI Extensions]节为中文Windows 98所特有，其中包含的设定用于类型媒体文件与不同媒体控制接口(MCI)设备驱动程序的关联，当一个媒体文件被选定，Windows 98就使用与之相关联的驱动程序来播放它。该节可包括多行如下格式的设置：  
+扩展名=多媒体设置类型  
+如：  
+[MCI Extensions]  
+wav=waveaudio  
+mid=sequencer  
+rmi=sequencer  
+mmmm=animation  
+以上几行由中文Windows 98设置程序自动设置，用于告诉Windows 98怎样转换多媒体文件，用户无需自己编辑本段内容。  
+
+
+12、[Compatibility] 
+
+
+
+[Compatibility]节用于解决中文Windows 98和Windows 3.x之间的差异所引起的兼容性问题。每行的关键字都是一个应用程序名，参数为一个十六进制数，如： 
+
+Charisma=0x2000 
+
+安装Windows 98时，设置程序(SETUP)可自动建立24个以上的[Compatibility]设置(无论系统中是否有这些应用程序)。其它应用程序的安装程序也可以将相关设置加入到WIN.INI文件的该节中，用户无需自己编辑此节内容。 
+
+13、[Fonts] 
+
+[Fonts]节用于记录Windows 98在启动每个任务时所装入的屏幕字体名。每一设置行的格式如下： 
+
+字体名=字体.文件名 
+
+字体名为中文Windows 98对话窗中显示的字体名称。字体.文件名是描述该字体特征的文件名。 
+
+注：只在WIN.INI文件的[Fonts]段中加入一个新设置，并不能为系统提供相应的字体，要使用屏幕字体，必须先通过控制面板的“字体”对话窗进行安装。 
+
+14、[Dbcs Fonts] 
+
+该节是中文Windows 98新增加的，主要为Windows 98屏幕上的显示字体，显示汉字设置缓冲区。 
+
+(1)SystemFont=字体名(缺省值：无)：该设置提供中文Windows 98系统的显示字体。 
+
+(2)AssocSystemFont=字体类型，字型大小，字体名(缺省值：TT，，DLSIMSUN.FOT)：该设置提供Windows 98系统显示汉字的字体、字型等。 
+
+(3)PreCacheCharacters=字符串(缺省值：无)：该设置在内存中为指定的系统菜单或常用字符串开辟一个缓冲区，以提高显示速度。 
+
+(4)CriticalErrorMsg=字符串(缺省值：无)：该设置为中文Windows 98的错误提示对话框中的字符串提供一个缓冲区，以提高它们的显示速度。 
+
+15、[DbcsMsgMode] 
+
+该节是中文Windows 98新增加的，只有一个设置，即Characters=，它采用的是字符信息显示方式，默认值为无。 
+
+16、[Microsoft Word 2.0] 
+
+该节为Word 2.0 for Windows提供，只有一个设置项，即：HPDSKJET=＋1 
+
+17、[Associated CharSet] 
+
+该节用于中文Windows 98所使用的关联字符集。 
+
+18、[Associated DefaultFonts] 
+
+该节主要用于设置关联缺省字体。 
+
+19、[Associated Fonts] 
+
+该节主要用于设置中文Windows 98的关联字体，一般采用缺省字体。 
+
+20、[PreCache] 
+
+该节主要用于为中文Windows 98显示系统字符设置缓冲区。 
+
+21、[Bitmap for TrueType font driver] 
+
+该节主要用于设置TrueType字体驱动程序的位图文件名。 
+
+22、[Bitmap for DLSIMSUN.FOT] 
+
+该节设置中文Windows 98造字程序的DLSIMSUN.FOT位图。 
+
+23、Embedding 
+
+该节可包含一行或多行如下格式的设置项： 
+
+对象=描述，描述，程序名，格式 
+
+这些设置用于定义可嵌入OLE客户应用程序的对象类别。该节的信息同时保存在Windows 98的登录数据库Registry中，并且和Windows早期版本的应用程序兼容。 
+
+尽管该节的设置最终会过时，但是却不能把它从WIN.INI文件中删除。因为许多OLE客户的应用程序都是从WIN.INI读取信息，而不是从登录数据中读取对象信息的。用户无需编辑本段内容。 
+
+
+
+[此贴子已经被作者于2004-12-16 9:13:03编辑过] 
+
+
+--  作者：adiao 
+--  发布时间：2004-12-16 10:13:44 
+
+--   
+
+24、[Colors]  
+该节能指定用户在Windows 98控制面板的“显示器”属性窗中的“外观”页颜色。该节中包括21行如下格式的设置项：  
+Component=r g b  
+关键字Component用于命名Windows 98用户界面的一个组成部分。参数r、g、b则表示红、绿、蓝三种颜色(参数范围在0～255之间)。  
+假如用户喜欢其它机器屏幕的颜色设置，可把那台微机的WIN.INI文件中的该节拷入自己的系统中。  
+25、[PrintersPorts]  
+该节指定Windows 98系统的每台打印设备所联的接口以及各自有效的超时设置。控制面板能自动对此段进行修改，用户无需编辑此段。  
+[PrintersPorts]段中可包含一行或多行如下格式的设置项：  
+Device=driver,port,Device Timeout,RetryTimeout[，其它接口...]  
+下面就是它一个典型的设置：  
+[PrinterPorts]＆＆打印机配置  
+EPSON LQ－2500=EPSON24，LPT1：，15，45  
+STAR CR3240=EPSON24，LPT1：，15，45  
+Device为打印机名，同时应在WIN.INI的[Windows]节中的“Device=”行说明该名。driver为打印机驱动程序名，但不带.DRV扩展名。Port是WIN.INI的[Ports]段中的一个接口名。DeviceTimeOut用于指定Windows等待打印机联接的最长时间，若超过此时间设置，系统显示超时错误。RetryTimeOut用于指定中文Windows在向打印机传送数据时等待打印机应答的最长时间，若超过此设置，系统报告超时错误。  
+若一台打印机和多个接口相联，则应在该打印机的“Device=”行中说明各联接关系。例如，EPSON LQ－2500打印机同时与FILE：和LPT1：相联，则该行设置应该为：  
+EPSON LQ－2500=EPSON24,FILE：,15,45,LPT1：,15,45  
+26、[Devices]  
+该节是为兼容Windows 3.x的应用程序而设置的。在Windows 3.x中，其作用与Windows 98的[PrinterPorts]节类似。该节不能被删除或屏蔽，因为非Windows3.x应用程序也许需要在该节查询信息。  
+[devices]节可包含一行或多行如下格式的设置项：  
+Device=driver,port[,other port]  
+Device为打印机名，该名需在WIN.INI中[windows]节的“Device=”行加以说明，并且显示在用户应用程序的打印机选择对话窗中。driver是指打印机驱动程序，但不带.DRV扩展名。  
+若一台打印机和多个接口相联，则应在该打印机的“Device=”行中说明各联接关系。  
+27、[Programs]  
+与[Windows]段中“Programs=”行不同的是，该节主要用于扩展DOS的PATH环境变量。当Windows 98在运行一个文文件，却无法找找到相应的.EXE文件时，  
+系统将提示输入该.EXE文件的路径，在正确地启动了.EXE文件之后，Windows 98便在WIN.INI的[Programs]段中建立相应的设置项。其格式为：  
+程序文件=驱动器：目录\\程序文件  
+例如：把NOTEPAD.EXE移到C:\\Windows\\APPS目录中，而路径未在AUTOEXEC.BAT的“PATH=”语句中说明，当运行CGJ.TXT时，Windows 98将会询问NOTEPAD.EXE的位置，输入正确的路径后，Windows 98自动在WIN.INI文件中建立一个[Programs]小节，并在其中加入：  
+Notepad.exe=c:\\windows\\apps\\notepad.exe  
+28、[Spooler]  
+该节描述Windows 98的打印管理器打印文本时的有关信息，例如：Windows=显示窗口位置，DisplaySize=显示大小，DisplayTime=显示时间。  
+29、[Compatibility32]  
+该节用于解决Windows 98和Windows 3.X之间的差异所引起的32位兼容性问题。每行的关键字都是一个应用程序名，参数为一个十六进制数，如：  
+MCAD=0x00600000  
+安装Windows 98时，设置程序(SETUP)会自动建立24个以上的[Compatibility]节设置(无论系统中是否有这些应用程序)，其它应用程序的安装程序也可以将相关设置加入到WIN.INI文件中。  
+30、[IME Compatibility]  
+该节用于解决中文Windows 98的汉字输入法(IME)和Windows 3.x之间的差异所引起的兼容性问题。关键字为应用程序名，参数为十六进制数，如：  
+EXCEL=0x00000002  
+与前面类似，在安装Windows 98时，自动建立该节内容。  
+31、[MCI Compatibility]  
+用法与前面类似。  
+32、[ModuleCompatibility]  
+用法与前面类似。  
+33、[Pscript.Drv]  
+该节用于设置中文Windows 98的PostScrip打印机驱动程序，目前只能对ATM字体进行设置，即：  
+ATMWorkaround=0/1(默认为0)  
+该设置表示中文Windows 98的PostScrip打印机是否使用AMT字体。1表示使用ATM字体。 
+
+34、[Mail]  
+该节对中文Windows 98的Microsoft Mail(Microsoft邮局)软件进行设置。  
+Microsoft Mail、Microsoft FAX、Microsoft Exchange是Windows 98新增加的用于网络共享的软件。[Mail]节能对这些软件的配置进行设置。  
+(1)MAPI=0/1(默认为0)：该设置确定Windows 98的Microsoft邮局是否使用MAPI。为1则表示使用。  
+(2)MAPLX=0/1(默认为0)：该设置确定Windows 98的Microsoft邮局是否使用MAPIX(它是MAPI的扩展)。为1则表示使用。  
+(3)OLEMessaging=0/1(默认为0)：该设置确定Windows 98的Microsoft邮局是否显示OLE服务程序的有关信息。为1则显示OLE服务程序的有关信息。  
+(4)CMC=0/1(默认为0)：该设置确定Windows 98的Microsoft邮局是否使用CMC。为1表示使用。  
+(5)CMCDLLName=DLL文件名(16位)：该设置定义使用CMC的16位DLL文件名。  
+(6)CMCDLLName32=DLL文件名(32位)：该设置定义使用CMC的32位DLL文件名。  
+(7)Exchange=Microsoft Exchange软件的执行文件名：该设置定义Microsoft Exchange软件执行文件名。  
+35、[Windows Telephony]  
+该节对Windows 98的电话通讯有关参数进行设置。目前只有一个设置项：  
+TelephonINIChanged=日期 时间(默认为“无”)  
+该设置记录电话通讯初始化文件日期和时间。  
+36、[MAPI 1.0 Time Zone]  
+该节设置了MAPI 1.0的时区有关参数。  
+(1)ActiveTimeBias=十六进制数：该设置定义了激活的时间线(相对于格林威治标准线)的位置。  
+(2)StandardName=国家标准时间：该设置定义了当前时区的国家标准时间。  
+(3)DaylinghtName=国家夏时制时间：该设置定义了当前时区的国家夏时制时间。  
+(4)Bias=fffffe20：该设置定义了时间线的位置。  
+(5)StandardBias=0：该设置定义了标准时间线的位置。  
+(6)DaylightBias=ffffffc4：该设置定义了夏时制时间线的位置。  
+(7)StandardStart=32位十进制数：该设置定义了标准时间线的开始位置。  
+(8)DaylightStart=32位十进制数：该设置定义了夏时制时间线的开始位置。  
+37、[Paintbrush]  
+该节对Windows 98附件中的“画图”的有关参数进行设置。目前该节只有一个设置：  
+OmitPictureFormat=0/1(默认为1)  
+为1表示BMP图片格式，为0表示PCX图片格式。
+

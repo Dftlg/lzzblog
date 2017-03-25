@@ -1,0 +1,36 @@
+﻿<div id="commentlist">
+    </div>
+<script>
+    $(document).ready(function () {             
+        $.ajax({
+            type: 'get',
+            dataType: 'json',
+            url: '/Reply/Rylist/' ,
+            data: {},
+            success: function (data) {
+                $("#commentlist").empty();
+                $("#commentlist").append("<div class='row sqle'><div class=col-xs-3>ID</div><div class=col-xs-3>发布者</div><div class=col-xs-3>时间</div><div class=col-xs-3>删除</div></div><hr/>")
+                $.each(data, function (index, lists) {
+                    $("#commentlist").append("<div class='comment" + lists.id + " sqle row' ><div class=col-xs-3>" + lists.id + "</div><div class=col-xs-3>" + lists.user + "</div><div class=col-xs-3>" + lists.replytime + "</div>  <div class='col-xs-3 delete' id=delete" + lists.id + ">删除</div> </div><hr/>")
+                })
+            }
+        })
+    })
+    $(document).on("click", ".delete", function () {
+        var id = $(this).attr("id");
+        id = id.substring(6);
+        var r = confirm("是否要删除此评论");
+        if (r == true) {
+            $.post("/Reply/RyDeleteAdmin/", { rid: id }, function (data) {
+                if (data) {
+                    alert("删除成功!");
+                    window.location.reload();
+                }
+                else {
+                    alert("删除失败！");
+                }
+            });
+        }
+    })
+    </script>
+@Styles.Render("~/FriList")

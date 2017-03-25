@@ -1,0 +1,42 @@
+﻿
+<div class="c_navbar">栏目管理 >> 修改删除栏目</div>
+<div class="fs_wapper">
+    
+        <fieldset>
+            <legend>栏目</legend>
+            <ul id="ctree" class="easyui-tree" data-options="url:'@Url.Action("ManageTreeChildrenJson", "Category")'"></ul>
+        </fieldset>
+</div>
+<div class="split"></div>
+<div class="clear"></div>
+<script type="text/javascript">
+            //using("tree", function () {
+                $("#ctree").tree({
+                    onClick: function (node) {
+                        
+                        $.get("@Url.Action("ManageDetails", "Category")/" + node.id, null, function (data) {                   
+                            if ($("#tabs").tabs('exists', "Category"+node.id)) {
+                                $("#tabs").tabs('select', "Category" + node.id);
+                            }
+                            else {
+                                $("#tabs").tabs('add', {
+                                    title: "Category" + node.id,
+                                    closable: true,
+                                    content: data
+                                });
+                            }
+                        });
+                    }
+                });
+            //});
+</script>
+
+
+
+
+
+
+
+
+
+

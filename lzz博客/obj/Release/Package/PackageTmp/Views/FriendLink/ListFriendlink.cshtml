@@ -1,0 +1,46 @@
+﻿<div class="friend">
+    <div class="c_navbar">友链管理 >> 友链列表</div>
+    <div class="fs_wapper">
+        <div id="friendlist">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    LintFriendLink();
+   
+    $(document).on("click", ".friendedit", function () {
+        id = $(this).attr("id");
+        id = id.substring(4);
+        $.get("/FriendLink/EditFriendlink/" + id, null, function (data) {            
+            if ($("#tabs").tabs('exists', "FrdLikEt" + id)) {
+                $("#tabs").tabs('select', "FrdLikEt" + id);
+            }
+            else {
+                $("#tabs").tabs('add', {
+                    title: "FrdLikEt" + id,
+                    closable: true,
+                    content: data
+                });
+            }
+        })
+    })
+    $(document).on("click", ".frienddelet", function () {
+        id = $(this).attr("id");
+        id = id.substring(5);
+        var r = confirm("是否要删除此友链");
+        if (r == true) {          
+            $.post('/FriendLink/ListDelete', { "Frlkid":+id+""}, function (data) {
+                if (data) {
+                    alert("删除成功!");
+                    window.location.reload();
+                }
+                else {
+                    alert("删除失败！");
+                }
+            });
+        }
+        })
+    
+    
+</script>
+@Styles.Render("~/FriList")

@@ -1,0 +1,25 @@
+﻿@*@Scripts.Render("~/EasyUi/js")*@
+<div id="westmenu" class="easyui-accordion">
+    <div title="栏目管理" class="leftsidebar">
+        <ul>
+            
+            <li >@Html.ActionLink("添加栏目", "ManageAdd", "Category", null, new { @class = "WestMenuLink" })</li>
+            <li @*id="westmenulink"*@>@Html.ActionLink("栏目树添加修改", "ManagePartialTree", "Category", null, new { @class = "WestMenuLink" })</li>
+            
+            @*<li id="westmenulink">添加栏目</li>*@
+            
+        </ul>
+    </div>
+    @*<div title="文章管理" class="leftsidebar">
+        <ul>
+            <li>@Html.ActionLink("添加文章","")
+        </ul>
+    </div>*@
+</div>
+<script type="text/javascript">
+    WestMenu();
+    //alert(window.parent.a);
+    
+    
+</script>
+

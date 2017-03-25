@@ -1,0 +1,10 @@
+﻿@*@model PagerData<lzz博客.Models.CommonModel>*@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "主页";
+}
+<div class="banner">
+   
+    @Html.Action("Userview", "Article") 
+</div>
+<h3>欢迎访问网站首页！</h3>

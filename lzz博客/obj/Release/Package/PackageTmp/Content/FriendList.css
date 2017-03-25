@@ -1,0 +1,35 @@
+﻿body {
+}
+.listst{
+    text-align:center;
+    font-size:14px;
+    
+}
+a:hover{
+    text-decoration:none;
+}
+hr{
+    margin-top:0px !important;
+    margin-bottom:0px !important;
+}
+.friendedit{
+    cursor:pointer;
+
+}
+.frienddelet{
+    cursor:pointer;
+}
+#commentlist{
+    border:1px solid #6e6e6e;
+    margin:10px;
+    font-size:14px;
+    padding:10px
+}
+.sqle{
+    margin-bottom:10px;
+   
+}
+.delete{
+    cursor:pointer;
+}
+

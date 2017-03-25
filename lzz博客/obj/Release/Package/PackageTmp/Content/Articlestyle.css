@@ -1,0 +1,85 @@
+﻿body {
+}
+.title{
+    text-align:center;
+    font-size:29px;
+    font-weight:bold;
+    letter-spacing:1px;
+    margin:10px 0px 30px 0px;
+}
+.infostyle{
+    float:right;
+    font-size:14px;
+}
+.text{
+    font-size:14px !important;
+    letter-spacing:2px;
+    line-height:24px;
+}
+.text p{
+    font-size:14px !important;
+    color:black;
+}
+.ryus{
+    /*float:right;*/
+       margin:0px 0px 0px 5px;  
+       float:left;
+}
+.rytime {
+   float:left;
+    
+}
+.ry{
+    margin:20px 0px 0px 0px;
+}
+.rylist{
+    margin:30px 0px 0px 0px;
+}
+.rycon{
+    /*float:right;*/
+    border:1px solid #ccc;
+    border-top:none;
+    /*background-color:aliceblue;*/
+    padding:10px 20px;
+    
+}
+.top{
+    background-color: #eee;
+    padding:4px;
+    border:1px solid #ccc;
+}
+.lefcon{
+    
+
+}
+.listst a{
+    font-size:14px;
+    margin:10px;
+    color:#6E7173;
+}
+#timepicker{
+    padding-bottom:10px;
+    border-bottom:1px solid #ddd;
+}
+.righcon{
+    padding-left:30px;
+    border-left:1px solid #CDC9C9;
+}
+.frirow{
+    margin-top:10px;
+
+}
+#pic{
+    margin-bottom:10px;
+
+}
+embed{
+    border:1px solid #ddd;
+}
+
+/*.delete{
+    float:right;
+}*/
+
+
+
